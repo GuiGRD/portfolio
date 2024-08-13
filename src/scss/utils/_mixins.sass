@@ -1,0 +1,36 @@
+@mixin ratio($width, $height)
+  &:after
+    content: ""
+    display: inline-block
+    padding-top: calc(#{$height} / #{$width} * 100%)
+    width: 100%
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size)
+  $u1: unit($min-vw)
+  $u2: unit($max-vw)
+  $u3: unit($min-font-size)
+  $u4: unit($max-font-size)
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4
+    &
+      font-size: $min-font-size
+      @media screen and (min-width: #{$min-vw})
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}))
+
+      @media screen and (min-width: #{$max-vw})
+        font-size: $max-font-size
+
+// USAGE: @include clamp("height", 450px, vwCalcDesktop(854), 854px)
+@mixin clamp($property, $min-size, $scaler, $max-size, $min-size-left:false, $scaler-left:false, $max-size-left:false)
+  @if $min-size-left == false
+    #{$property}: rem-calc($max-size) 
+    #{$property}: #{unquote("min(max(#{$min-size}, #{$scaler}), #{$max-size})")} 
+    #{$property}: #{unquote("clamp(#{$min-size}, #{$scaler}, #{$max-size})")}
+  @else if $min-size-left == 0 or $min-size-left == auto
+    #{$property}: rem-calc($max-size) $min-size-left 
+    #{$property}: #{unquote("min(max(#{$min-size}, #{$scaler}), #{$max-size})")} $min-size-left
+    #{$property}: #{unquote("clamp(#{$min-size}, #{$scaler}, #{$max-size})")} $min-size-left
+  @else
+    #{$property}: rem-calc($max-size) $min-size-left 
+    #{$property}: #{unquote("min(max(#{$min-size}, #{$scaler}), #{$max-size})")} #{unquote("min(max(#{$min-size-left}, #{$scaler-left}), #{$max-size-left})")} 
+    #{$property}: #{unquote("clamp(#{$min-size}, #{$scaler}, #{$max-size})")} #{unquote("clamp(#{$min-size-left}, #{$scaler-left}, #{$max-size-left})")}

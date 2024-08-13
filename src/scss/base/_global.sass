@@ -1,0 +1,90 @@
+html,
+body
+  height: 100%
+  min-height: 100%
+
+img 
+  user-select: none
+  
+body
+  background-color: $color-primary
+  color: $color-white
+  font-family: $font-regular
+  font-size: 1rem
+  line-height: 1.2em
+  overflow-x: hidden
+
+  &.overflow-hidden
+    overflow: hidden
+    pointer-events: none
+  
+  sup
+    font-size: 0.6em
+
+  h1
+    color: $color-white
+    font-family: $font-regular
+    font-size: 1.8rem
+    line-height: normal
+    margin-bottom: 0.3em
+    text-align: center
+
+  h2
+    color: $color-white
+    font-family: $font-regular
+    font-weight: lighter
+    font-size: 1.3rem
+    line-height: normal
+    margin-bottom: 0.7em
+    text-align: center
+
+  h3
+    color: $color-white
+    font-family: $font-regular
+    font-size: 1.8rem
+    margin-bottom: 1em
+    
+  h4,
+  h5,
+  h6
+    color: $color-white
+    font-family: $font-regular
+    font-size: 25px
+    line-height: 1.4em
+    margin-bottom: 25px
+
+  a
+    color: inherit
+    font-family: inherit
+    text-decoration: none
+  
+  p
+    color: $color-white
+    font-family: $font-regular
+    font-size: 1.3rem
+    line-height: 1.4em
+    margin-bottom: 1em
+
+    a
+      &:hover
+        text-decoration: underline
+      
+  strong
+    font-family: $font-bold
+  
+  ul,
+  ol
+    padding: 0 0 0 50px
+    
+    li
+      color: $color-white
+      font-family: $font-regular
+      font-size: 22px
+      line-height: 1.45em
+      margin-bottom: 25px
+      
+  ul
+    list-style: disc
+  
+  ol
+    list-style: decimal
