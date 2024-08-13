@@ -1,16 +1,10 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-  gsap.registerPlugin(ScrollSmoother, ScrollTrigger, ScrollToPlugin);
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
   let scrollTriggerActivated = false;
 
   document.querySelector('body').classList.remove('overflow-hidden');
 
-  // let smoother = ScrollSmoother.create({
-  //   wrapper: '#smooth-wrapper',
-  //   content: '#smooth-content',
-  //   smooth: 1,
-  //   smoothTouch: 0.1,
-  // });
 
   const tl1 = gsap.timeline();
   const tl2 = gsap.timeline();
